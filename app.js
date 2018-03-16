@@ -27,12 +27,12 @@ const server = http.createServer(app);
 const io = socketio.listen(server);
 
 
-mongoose.Promise = global.Promise;
-mongoose.connect(configs.mongoURL,(err)=>{
-	if(err)
-		console.log(err);
-	console.log('Da ket noi ket noi thanh cong!!!!');
-})
+// mongoose.Promise = global.Promise;
+// mongoose.connect(configs.mongoURL,(err)=>{
+// 	if(err)
+// 		console.log(err);
+// 	console.log('Da ket noi ket noi thanh cong!!!!');
+// })
 /**
  * Use, Set
  */

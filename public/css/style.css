@@ -1,0 +1,21 @@
+canvas{
+  background: skyblue;
+  -webkit-transition: -webkit-transform 1s;
+}
+.CavasDiv{
+  padding: 10px 10px;
+  border-style: double;
+  border-radius: 5px;
+  border-color: skyblue;
+  margin: 100px auto 0px;
+  width: 540px;
+}
+canvas:hover{
+  -webkit-transform: rotate(45deg);
+}
+.header{
+  float: left;
+}
+.room{
+  margin-top: 50px;
+}

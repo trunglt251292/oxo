@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>OXO Gamer</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script>
+      let socket = io();
+      function generateID(length) {
+          let text = ""
+          const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+          for(let i = 0; i < length; i++)  {
+              text += possible.charAt(Math.floor(Math.random() * possible.length))
+          }
+
+          return text
+      };
+      function rand() {
+          return Math.random().toString(36).substr(2); // remove `0.`
+      };
+      let id = generateID(10);
+      let a = token();
+      let flag = '';
+      function token() {
+          return rand() + rand(); // to make it longer
+      };
+      function joinserver() {
+        socket.emit('ketnoi',{id:id});
+      }
+      joinserver();
+
+      // Socket On
+      socket.on('flaguser',(data)=>{
+        alert('msg');
+        document.getElementById('X').disabled = true;
+        document.getElementById('O').disabled = true;
+        if(data.flag === 0){
+          document.getElementById('flag').innerHTML = "O";
+          flag = "O";
+        }else {
+          document.getElementById('flag').innerHTML = "X";
+          flag = "X";
+        }
+      });
+
+      socket.on('result_join_room',(data)=>{
+        if(data.success){
+          document.getElementById('nameroom').innerHTML = data.room;
+          document.getElementById('createroom').disabled = true;
+          document.getElementById('joinroom').disabled = true;
+        }else {
+          alert(data.msg);
+        }
+      });
+
+      socket.on('playuser',(data)=>{
+        let i = data.position;
+        let flag = data.flag;
+        co[i]=true;
+        canvas[i].style.webkitTransform = "rotate(180deg)";
+        ctx[i].font = "50px serif";
+        ctx[i].fillText(flag,9,40);
+      });
+    </script>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Game OXO</h1>
+      <p>Rom :</p><p id='nameroom'></p>
+      <button type="button" id="leaveroom" onclick="leaveroom()">Leave Room</button>
+      <p>Flag :</p><h3 id='flag'></h3>
+      Choose Flag : <button type="button" id="X" onclick="flagX()">X</button>&nbsp<button type="button" id="O" onclick="flagO()">O</button><br/><br/>
+      <button type="button" id="createroom" onclick="createroom()">Create Room</button>
+      <br/>
+      <button type="button" id="joinroom" onclick="joinroom()">Join Room</button><input type="text" id="textroom" value="" placeholder="Name Room">
+    </div>
+    <div class="CavasDiv">
+      <canvas id="canvas1" width="50" height="50" onclick="x(1)"></canvas>
+      <canvas id="canvas2" width="50" height="50" onclick="x(2)"></canvas>
+      <canvas id="canvas3" width="50" height="50" onclick="x(3)"></canvas>
+      <canvas id="canvas4" width="50" height="50" onclick="x(4)"></canvas>
+      <canvas id="canvas5" width="50" height="50" onclick="x(5)"></canvas>
+      <canvas id="canvas6" width="50" height="50" onclick="x(6)"></canvas>
+      <canvas id="canvas7" width="50" height="50" onclick="x(7)"></canvas>
+      <canvas id="canvas8" width="50" height="50" onclick="x(8)"></canvas>
+      <canvas id="canvas9" width="50" height="50" onclick="x(9)"></canvas>
+      <canvas id="canvas10" width="50" height="50" onclick="x(10)"></canvas><br/>
+      <canvas id="canvas11" width="50" height="50" onclick="x(11)"></canvas>
+      <canvas id="canvas12" width="50" height="50" onclick="x(12)"></canvas>
+      <canvas id="canvas13" width="50" height="50" onclick="x(13)"></canvas>
+      <canvas id="canvas14" width="50" height="50" onclick="x(14)"></canvas>
+      <canvas id="canvas15" width="50" height="50" onclick="x(15)"></canvas>
+      <canvas id="canvas16" width="50" height="50" onclick="x(16)"></canvas>
+      <canvas id="canvas17" width="50" height="50" onclick="x(17)"></canvas>
+      <canvas id="canvas18" width="50" height="50" onclick="x(18)"></canvas>
+      <canvas id="canvas19" width="50" height="50" onclick="x(19)"></canvas>
+      <canvas id="canvas20" width="50" height="50" onclick="x(20)"></canvas><br/>
+      <canvas id="canvas21" width="50" height="50" onclick="x(21)"></canvas>
+      <canvas id="canvas22" width="50" height="50" onclick="x(22)"></canvas>
+      <canvas id="canvas23" width="50" height="50" onclick="x(23)"></canvas>
+      <canvas id="canvas24" width="50" height="50" onclick="x(24)"></canvas>
+      <canvas id="canvas25" width="50" height="50" onclick="x(25)"></canvas>
+      <canvas id="canvas26" width="50" height="50" onclick="x(26)"></canvas>
+      <canvas id="canvas27" width="50" height="50" onclick="x(27)"></canvas>
+      <canvas id="canvas28" width="50" height="50" onclick="x(28)"></canvas>
+      <canvas id="canvas29" width="50" height="50" onclick="x(29)"></canvas>
+      <canvas id="canvas30" width="50" height="50" onclick="x(30)"></canvas><br/>
+      <canvas id="canvas31" width="50" height="50" onclick="x(31)"></canvas>
+      <canvas id="canvas32" width="50" height="50" onclick="x(32)"></canvas>
+      <canvas id="canvas33" width="50" height="50" onclick="x(33)"></canvas>
+      <canvas id="canvas34" width="50" height="50" onclick="x(34)"></canvas>
+      <canvas id="canvas35" width="50" height="50" onclick="x(35)"></canvas>
+      <canvas id="canvas36" width="50" height="50" onclick="x(36)"></canvas>
+      <canvas id="canvas37" width="50" height="50" onclick="x(37)"></canvas>
+      <canvas id="canvas38" width="50" height="50" onclick="x(38)"></canvas>
+      <canvas id="canvas39" width="50" height="50" onclick="x(39)"></canvas>
+      <canvas id="canvas40" width="50" height="50" onclick="x(40)"></canvas><br/>
+      <canvas id="canvas41" width="50" height="50" onclick="x(41)"></canvas>
+      <canvas id="canvas42" width="50" height="50" onclick="x(42)"></canvas>
+      <canvas id="canvas43" width="50" height="50" onclick="x(43)"></canvas>
+      <canvas id="canvas44" width="50" height="50" onclick="x(44)"></canvas>
+      <canvas id="canvas45" width="50" height="50" onclick="x(45)"></canvas>
+      <canvas id="canvas46" width="50" height="50" onclick="x(46)"></canvas>
+      <canvas id="canvas47" width="50" height="50" onclick="x(47)"></canvas>
+      <canvas id="canvas48" width="50" height="50" onclick="x(48)"></canvas>
+      <canvas id="canvas49" width="50" height="50" onclick="x(49)"></canvas>
+      <canvas id="canvas50" width="50" height="50" onclick="x(50)"></canvas><br/>
+      <canvas id="canvas51" width="50" height="50" onclick="x(51)"></canvas>
+      <canvas id="canvas52" width="50" height="50" onclick="x(52)"></canvas>
+      <canvas id="canvas53" width="50" height="50" onclick="x(53)"></canvas>
+      <canvas id="canvas54" width="50" height="50" onclick="x(54)"></canvas>
+      <canvas id="canvas55" width="50" height="50" onclick="x(55)"></canvas>
+      <canvas id="canvas56" width="50" height="50" onclick="x(56)"></canvas>
+      <canvas id="canvas57" width="50" height="50" onclick="x(57)"></canvas>
+      <canvas id="canvas58" width="50" height="50" onclick="x(58)"></canvas>
+      <canvas id="canvas59" width="50" height="50" onclick="x(59)"></canvas>
+      <canvas id="canvas60" width="50" height="50" onclick="x(60)"></canvas><br/>
+      <canvas id="canvas61" width="50" height="50" onclick="x(61)"></canvas>
+      <canvas id="canvas62" width="50" height="50" onclick="x(62)"></canvas>
+      <canvas id="canvas63" width="50" height="50" onclick="x(63)"></canvas>
+      <canvas id="canvas64" width="50" height="50" onclick="x(64)"></canvas>
+      <canvas id="canvas65" width="50" height="50" onclick="x(65)"></canvas>
+      <canvas id="canvas66" width="50" height="50" onclick="x(66)"></canvas>
+      <canvas id="canvas67" width="50" height="50" onclick="x(67)"></canvas>
+      <canvas id="canvas68" width="50" height="50" onclick="x(68)"></canvas>
+      <canvas id="canvas69" width="50" height="50" onclick="x(69)"></canvas>
+      <canvas id="canvas70" width="50" height="50" onclick="x(70)"></canvas><br/>
+      <canvas id="canvas71" width="50" height="50" onclick="x(71)"></canvas>
+      <canvas id="canvas72" width="50" height="50" onclick="x(72)"></canvas>
+      <canvas id="canvas73" width="50" height="50" onclick="x(73)"></canvas>
+      <canvas id="canvas74" width="50" height="50" onclick="x(74)"></canvas>
+      <canvas id="canvas75" width="50" height="50" onclick="x(75)"></canvas>
+      <canvas id="canvas76" width="50" height="50" onclick="x(76)"></canvas>
+      <canvas id="canvas77" width="50" height="50" onclick="x(77)"></canvas>
+      <canvas id="canvas78" width="50" height="50" onclick="x(78)"></canvas>
+      <canvas id="canvas79" width="50" height="50" onclick="x(79)"></canvas>
+      <canvas id="canvas80" width="50" height="50" onclick="x(80)"></canvas><br/>
+      <canvas id="canvas81" width="50" height="50" onclick="x(81)"></canvas>
+      <canvas id="canvas82" width="50" height="50" onclick="x(82)"></canvas>
+      <canvas id="canvas83" width="50" height="50" onclick="x(83)"></canvas>
+      <canvas id="canvas84" width="50" height="50" onclick="x(84)"></canvas>
+      <canvas id="canvas85" width="50" height="50" onclick="x(85)"></canvas>
+      <canvas id="canvas86" width="50" height="50" onclick="x(86)"></canvas>
+      <canvas id="canvas87" width="50" height="50" onclick="x(87)"></canvas>
+      <canvas id="canvas88" width="50" height="50" onclick="x(88)"></canvas>
+      <canvas id="canvas89" width="50" height="50" onclick="x(89)"></canvas>
+      <canvas id="canvas90" width="50" height="50" onclick="x(90)"></canvas><br/>
+      <canvas id="canvas91" width="50" height="50" onclick="x(91)"></canvas>
+      <canvas id="canvas92" width="50" height="50" onclick="x(92)"></canvas>
+      <canvas id="canvas93" width="50" height="50" onclick="x(93)"></canvas>
+      <canvas id="canvas94" width="50" height="50" onclick="x(94)"></canvas>
+      <canvas id="canvas95" width="50" height="50" onclick="x(95)"></canvas>
+      <canvas id="canvas96" width="50" height="50" onclick="x(96)"></canvas>
+      <canvas id="canvas97" width="50" height="50" onclick="x(97)"></canvas>
+      <canvas id="canvas98" width="50" height="50" onclick="x(98)"></canvas>
+      <canvas id="canvas99" width="50" height="50" onclick="x(99)"></canvas>
+      <canvas id="canvas100" width="50" height="50" onclick="x(100)"></canvas><br/>
+    </div>
+  </body>
+  <script src='/lib/event.game.js'></script>
+  <script src='/lib/event.js'></script>
+</html>
