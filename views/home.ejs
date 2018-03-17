@@ -63,6 +63,11 @@
         ctx[i].font = "50px serif";
         ctx[i].fillText(flag,9,40);
       });
+
+      socket.on('test', (data) => {
+        console.log('data:', data);
+        document.title = data.data;
+      });
     </script>
   </head>
   <body>
