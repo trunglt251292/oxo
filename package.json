@@ -8,7 +8,7 @@
     "start": "nodemon ./bin/dev",
     "clear": "rm -rf dist",
     "build": "npm run clear && mkdir dist && babel *.js -s -d dist & babel lib/ -s -d dist/lib && babel models/ -s -d dist/models && babel controlls/ -s -d dist/controlls && babel routers/ -s -d dist/routers && babel views/ -s -d dist/views && cp -R ./bin dist/bin",
-    "start:production": "pm2 start ./bin/dev",
+    "start:production": "pm2 start ./bin/dev -i 2",
     "stop:production": "pm2 flush && pm2 delete all",
     "start:db": "DEBUG=* node ./bin/dev"
   },
@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async-disk-cache": "^1.3.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-polyfill": "^6.26.0",
@@ -38,6 +39,7 @@
     "request-promise": "^4.2.2",
     "serve-favicon": "^2.4.5",
     "socket.io": "^2.0.4",
+    "socket.io-redis": "^5.2.0",
     "stylus": "^0.54.5"
   },
   "devDependencies": {
